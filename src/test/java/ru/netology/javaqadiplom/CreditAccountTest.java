@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class CreditAccountTest {
 
     @Test
-
+// исправленный pom
     public void shouldGetCreditLimit() {
         CreditAccount account = new CreditAccount(0, 10_000, 15);
         Assertions.assertEquals(10_000, account.getCreditLimit());
