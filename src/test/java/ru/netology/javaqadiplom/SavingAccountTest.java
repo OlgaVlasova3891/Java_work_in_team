@@ -63,7 +63,8 @@ public class SavingAccountTest {
     //баг № 2 - Исключение IllegalArgumentException не срабатывает при отрицательном значении minBalance
     public void minBalanceIsNegative() {
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            SavingAccount account = new SavingAccount(2_000, -1_000, 4_000, 10);
+//            SavingAccount account =
+            new SavingAccount(2_000, -1_000, 4_000, 10);
         });
     }
 
@@ -73,7 +74,8 @@ public class SavingAccountTest {
     //баг № 3 - Исключение IllegalArgumentException не срабатывает при значении minBalance большем, чем значение maxBalance
     public void minBalanceIsMoreMaxBalance() {
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            SavingAccount account = new SavingAccount(1_000, 2_000, 1_500, 15);
+//            SavingAccount account =
+            new SavingAccount(1_000, 2_000, 1_500, 15);
         });
     }
 
@@ -82,7 +84,8 @@ public class SavingAccountTest {
     //баг № 4 - Исключение IllegalArgumentException не срабатывает при отрицательном значении maxBalance
     public void maxBalanceIsNegative() {
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            SavingAccount account = new SavingAccount(10_000, 0, -100, 10);
+//            SavingAccount account =
+            new SavingAccount(10_000, 0, -100, 10);
         });
     }
 
@@ -91,7 +94,8 @@ public class SavingAccountTest {
     //баг № 5 - Исключение IllegalArgumentException не срабатывает при отрицательном значении initialBalance
     public void initialBalanceIsNegative() {
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            SavingAccount account = new SavingAccount(-10, 0, 1_000, 10);
+//            SavingAccount account =
+            new SavingAccount(-10, 0, 1_000, 10);
         });
     }
 
@@ -100,14 +104,16 @@ public class SavingAccountTest {
     //баг № 6 - Исключение IllegalArgumentException не срабатывает при значении initBalance большем, чем значение maxBalance
     public void initBalanceIsMoreMaxBalance() {
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            SavingAccount account = new SavingAccount(10_000, 2_000, 5_000, 12);
+//            SavingAccount account =
+            new SavingAccount(10_000, 2_000, 5_000, 12);
         });
     }
 
     @Test
     public void testCreateAccountWithNegativeRate() {
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            SavingAccount account = new SavingAccount(0, 0, 100, -5);
+//            SavingAccount account =
+            new SavingAccount(0, 0, 100, -5);
         });
     }
 
@@ -116,7 +122,8 @@ public class SavingAccountTest {
     //баг № 7 - Исключение IllegalArgumentException не срабатывает при значении initBalance меньшем, чем значение minBalance
     public void initialBalanceIsLessMinBalance() {
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            SavingAccount account = new SavingAccount(100, 1_000, 10_000, 10);
+//            SavingAccount account =
+            new SavingAccount(100, 1_000, 10_000, 10);
         });
     }
 
