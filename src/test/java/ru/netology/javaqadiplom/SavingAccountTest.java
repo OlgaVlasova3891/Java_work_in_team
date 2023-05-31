@@ -313,7 +313,15 @@ public class SavingAccountTest {
         SavingAccount account = new SavingAccount(1_000, 800, 5_000, 0);
         Assertions.assertEquals(0, account.yearChange());
     }
-
+    
+    @Test
+    //Тест на проверку годового дохода
+    //баг № 11 - Неверный расчет годового дохода при положительных значениях баланса и годовой ставки
+    public void yearIntegerDivision() {
+        SavingAccount account = new SavingAccount(99, 80, 5_000, 80);
+        Assertions.assertEquals(79, account.yearChange());
+    }
+    
     @Test
     public void yearChangeSolve() {
         SavingAccount account = new SavingAccount(1_000, 800, 5_000, 10);
