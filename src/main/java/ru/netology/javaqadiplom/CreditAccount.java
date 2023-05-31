@@ -24,15 +24,15 @@ public class CreditAccount extends Account {
                     "Накопительная ставка не может быть отрицательной, а у вас: " + rate
             );
         }
-        if (rate > 40) {
-            throw new IllegalArgumentException(
-                    "Ставка кредитования не может быть, больше 40%, а у вас: " + rate
-            );
-        }
+        //if (rate > 40) {
+        //    throw new IllegalArgumentException(
+        //            "Ставка кредитования не может быть, больше 40%, а у вас: " + rate
+        //    );
+        //}
 
-        if ((initialBalance + creditLimit) < 0) {
+        if (initialBalance < 0) {
             throw new IllegalArgumentException(
-                    "Ставка кредитования не может быть, больше 40%, а у вас: " + rate
+                    "Начальный баланс не может быть отрицательным, а у вас: " + initialBalance
             );
         }
 
