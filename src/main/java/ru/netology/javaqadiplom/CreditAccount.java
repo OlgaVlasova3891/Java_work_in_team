@@ -24,15 +24,15 @@ public class CreditAccount extends Account {
                     "Накопительная ставка не может быть отрицательной, а у вас: " + rate
             );
         }
-        if (rate > 40) {
-            throw new IllegalArgumentException(
-                    "Ставка кредитования не может быть, больше 40%, а у вас: " + rate
-            );
-        }
+        //if (rate > 40) {
+        //    throw new IllegalArgumentException(
+        //            "Ставка кредитования не может быть, больше 40%, а у вас: " + rate
+        //    );
+        //}
 
-        if ((initialBalance + creditLimit) < 0) {
+        if (initialBalance < 0) {
             throw new IllegalArgumentException(
-                    "Ставка кредитования не может быть, больше 40%, а у вас: " + rate
+                    "Начальный баланс не может быть отрицательным, а у вас: " + initialBalance
             );
         }
 
@@ -61,24 +61,24 @@ public class CreditAccount extends Account {
         if (amount <= 0) {
             return false;
         }
-        if (balance + creditLimit >= amount || creditLimit >= amount) {
+    //    if (balance + creditLimit >= amount || creditLimit >= amount) {
+    //       balance = balance - amount;
+    //       return true;
+    //   }
+    //    return false;
+    //}
+
+        if (amount > balance + creditLimit) {
+            return false;
+        }    
+        balance = balance - amount;
+        if (balance > creditLimit) {
             balance = balance - amount;
             return true;
+        } else {
+            return false;
         }
-        return false;
     }
-    // public boolean pay(int amount) {
-    //   if (amount <= 0) {
-    //     return false;
-    // }
-    // if (amount < balance + creditLimit) {
-    //    balance = balance - amount;
-    //   return true;
-    //} else {
-    //  return false;
-    // }
-    // }
-
     /**
      * Операция пополнения карты на указанную сумму.
      * В результате успешного вызова этого метода, баланс должен увеличиться
@@ -112,7 +112,8 @@ public class CreditAccount extends Account {
     @Override
     public int yearChange() {
         if (balance < 0) {
-            return balance / 100 * rate;
+    //      return balance / 100 * rate;
+            return balance * rate / 100;
         } else {
             return 0;
         }
