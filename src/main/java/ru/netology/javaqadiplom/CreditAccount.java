@@ -61,24 +61,24 @@ public class CreditAccount extends Account {
         if (amount <= 0) {
             return false;
         }
-        if (balance + creditLimit >= amount || creditLimit >= amount) {
+    //    if (balance + creditLimit >= amount || creditLimit >= amount) {
+    //       balance = balance - amount;
+    //       return true;
+    //   }
+    //    return false;
+    //}
+
+        if (amount > balance + creditLimit) {
+            return false;
+        }    
+        balance = balance - amount;
+        if (balance > creditLimit) {
             balance = balance - amount;
             return true;
+        } else {
+            return false;
         }
-        return false;
     }
-    // public boolean pay(int amount) {
-    //   if (amount <= 0) {
-    //     return false;
-    // }
-    // if (amount < balance + creditLimit) {
-    //    balance = balance - amount;
-    //   return true;
-    //} else {
-    //  return false;
-    // }
-    // }
-
     /**
      * Операция пополнения карты на указанную сумму.
      * В результате успешного вызова этого метода, баланс должен увеличиться
