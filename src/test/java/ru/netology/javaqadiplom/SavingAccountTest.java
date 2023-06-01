@@ -25,17 +25,17 @@ public class SavingAccountTest {
     //Тест проверки операции пополнения счета с некорректными параметрами
     @Test
     public void testAddWithInvalidAmount() {
-        SavingAccount savingAccount = new SavingAccount(1000, 500, 2000, 10);
-        assertFalse(savingAccount.add(-500));
-        assertEquals(1000, savingAccount.getBalance());
+        SavingAccount account = new SavingAccount(1000, 500, 2000, 10);
+        assertFalse(account.add(-500));
+        assertEquals(1000, account.getBalance());
     }
 
     //Тест проверки операции пополнения счета, когда счет уже на максимальном балансе
     @Test
     public void testAddWhenAccountAtMaxBalance() {
-        SavingAccount savingAccount = new SavingAccount(2000, 500, 2000, 10);
-        assertFalse(savingAccount.add(500));
-        assertEquals(2000, savingAccount.getBalance());
+        SavingAccount account = new SavingAccount(2000, 500, 2000, 10);
+        assertFalse(account.add(500));
+        assertEquals(2000, account.getBalance());
     }
 
 
@@ -137,17 +137,17 @@ public class SavingAccountTest {
 
     @Test
     public void payAmountIsMoreMaxBalance() {
-        SavingAccount savingAccount = new SavingAccount(3_000, 1_000, 10_000, 12);
+        SavingAccount account = new SavingAccount(3_000, 1_000, 10_000, 12);
         Boolean expected = false;
-        Boolean actual = savingAccount.pay(12_000);
+        Boolean actual = account.pay(12_000);
         Assertions.assertEquals(expected, actual);
     }
 
     @Test
     public void payAmountIsBig() {
-        SavingAccount savingAccount = new SavingAccount(3_000, 1_000, 10_000, 12);
+        SavingAccount account = new SavingAccount(3_000, 1_000, 10_000, 12);
         Boolean expected = false;
-        Boolean actual = savingAccount.pay(12_000);
+        Boolean actual = account.pay(12_000);
         Assertions.assertEquals(expected, actual);
     }
 
