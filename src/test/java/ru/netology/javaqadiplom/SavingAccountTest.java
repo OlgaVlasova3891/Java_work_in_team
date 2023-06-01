@@ -199,6 +199,20 @@ public class SavingAccountTest {
     }
 
     @Test
+    public void testAddBelowZero() {
+        SavingAccount account = new SavingAccount(1000, 0, 2000, 10);
+        assertFalse(account.add(-100));
+        assertEquals(1000, account.getBalance());
+    }
+
+    @Test
+    public void testAddMoreZero() {
+        SavingAccount account = new SavingAccount(1000, 0, 2000, 10);
+        assertTrue(account.add(100));
+        assertEquals(1100, account.getBalance());
+    }
+
+    @Test
     public void testAddAmountExceedingMaxBalance() {
         SavingAccount account = new SavingAccount(1500, 0, 2000, 10);
         assertFalse(account.add(600)); // Операция не должна пройти
@@ -210,6 +224,20 @@ public class SavingAccountTest {
     public void testAddWithTooLargeAmount() {
         SavingAccount account = new SavingAccount(1000, 0, 2000, 10);
         assertFalse(account.add(5000)); // попытка пополнения на сумму больше, чем допустимый максимум
+        assertEquals(1000, account.getBalance());
+    }
+
+    @Test
+    public void testBalanceWithAmountEqualMaxBalance() {
+        SavingAccount account = new SavingAccount(1000, 0, 2000, 10);
+        assertTrue(account.add(1000)); // попытка пополнения на сумму больше, чем допустимый максимум
+        assertEquals(2000, account.getBalance());
+    }
+
+    @Test
+    public void testBalanceWithAmountMoreMaxBalance() {
+        SavingAccount account = new SavingAccount(1000, 0, 2000, 10);
+        assertFalse(account.add(2000)); // попытка пополнения на сумму больше, чем допустимый максимум
         assertEquals(1000, account.getBalance());
     }
 
@@ -313,7 +341,7 @@ public class SavingAccountTest {
         SavingAccount account = new SavingAccount(1_000, 800, 5_000, 0);
         Assertions.assertEquals(0, account.yearChange());
     }
-    
+
     @Test
     //Тест на проверку годового дохода
     //баг № 11 - Неверный расчет годового дохода при положительных значениях баланса и годовой ставки
@@ -321,7 +349,7 @@ public class SavingAccountTest {
         SavingAccount account = new SavingAccount(99, 80, 5_000, 80);
         Assertions.assertEquals(79, account.yearChange());
     }
-    
+
     @Test
     public void yearChangeSolve() {
         SavingAccount account = new SavingAccount(1_000, 800, 5_000, 10);
