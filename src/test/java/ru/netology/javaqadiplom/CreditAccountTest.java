@@ -113,9 +113,10 @@ public class CreditAccountTest {
 
     @Test
     public void testYearChangeIfBalanceIsAboutMinusOneHundred() {
-        // balance = -99, rate > 0
-        CreditAccount account = new CreditAccount(-99, 5_000, 15);
-        Assertions.assertEquals(-14, account.yearChange());
+
+      // balance = -99, rate > 0
+      CreditAccount account = new CreditAccount(-99, 5_000, 15);
+      Assertions.assertEquals(-14, account.yearChange());
     }
 
     @Test
@@ -220,6 +221,7 @@ public class CreditAccountTest {
         Assertions.assertEquals(expected, actual);
     }
 
+
     // @Test
     //public void AllBalanceBelowAmount() {
     //    Account account = new CreditAccount(4_000, 5_000, 15);
@@ -294,16 +296,15 @@ public class CreditAccountTest {
     @Test
     public void testExceptionIfNegativeRate() {
         // rate < 0
-
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
             new CreditAccount(100, 5_000, -15);
         });
     }
-
+  
+   
     // @Test
     // public void testExceptionIfRateIsAboveMax() {
     // rate > max
-
     //    Assertions.assertThrows(IllegalArgumentException.class, () -> {
     //        new CreditAccount(100, 5_000, 41);
     //    });
