@@ -87,7 +87,7 @@ public class CreditAccount extends Account {
      * @return true если операция прошла успешно, false иначе.
      * @return
      */
-    
+
     @Override
     public boolean add(int amount) {
         if (amount <= 0) {
@@ -119,6 +119,6 @@ public class CreditAccount extends Account {
     public int getCreditLimit() {
         return creditLimit;
     }
-
 }
+
 
