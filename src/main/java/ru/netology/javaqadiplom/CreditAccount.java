@@ -30,9 +30,9 @@ public class CreditAccount extends Account {
         //    );
         //}
 
-        if (initialBalance < 0) {
+        if (initialBalance + creditLimit < 0) {
             throw new IllegalArgumentException(
-                    "Начальный баланс не может быть отрицательным, а у вас: " + initialBalance
+                    "Сумма начального баланса и кредита не может быть отрицательной, а у вас: " + (initialBalance + creditLimit)
             );
         }
 
@@ -61,24 +61,20 @@ public class CreditAccount extends Account {
         if (amount <= 0) {
             return false;
         }
-    //    if (balance + creditLimit >= amount || creditLimit >= amount) {
-    //       balance = balance - amount;
-    //       return true;
-    //   }
-    //    return false;
-    //}
-
-        if (amount > balance + creditLimit) {
-            return false;
-        }    
-        balance = balance - amount;
-        if (balance > creditLimit) {
+        //    if (balance + creditLimit >= amount || creditLimit >= amount) {
+        //       balance = balance - amount;
+        //       return true;
+        //   }
+        //    return false;
+        //}
+        if (balance + creditLimit < amount) {
             balance = balance - amount;
-            return true;
-        } else {
             return false;
         }
+        balance = balance - amount;
+        return true;
     }
+
     /**
      * Операция пополнения карты на указанную сумму.
      * В результате успешного вызова этого метода, баланс должен увеличиться
@@ -91,6 +87,7 @@ public class CreditAccount extends Account {
      * @return true если операция прошла успешно, false иначе.
      * @return
      */
+    
     @Override
     public boolean add(int amount) {
         if (amount <= 0) {
@@ -112,24 +109,16 @@ public class CreditAccount extends Account {
     @Override
     public int yearChange() {
         if (balance < 0) {
-    //      return balance / 100 * rate;
+            //      return balance / 100 * rate;
             return balance * rate / 100;
         } else {
             return 0;
         }
     }
 
-
     public int getCreditLimit() {
         return creditLimit;
     }
 
 }
-
-
-
-
-
-
-
 
