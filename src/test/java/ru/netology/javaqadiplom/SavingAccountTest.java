@@ -137,9 +137,9 @@ public class SavingAccountTest {
 
     @Test
     public void payAmountIsMoreMaxBalance() {
-        SavingAccount savingAccount = new SavingAccount(3_000, 1_000, 10_000, 12);
+        SavingAccount account = new SavingAccount(3_000, 1_000, 10_000, 12);
         Boolean expected = false;
-        Boolean actual = savingAccount.pay(12_000);
+        Boolean actual = account.pay(12_000);
         Assertions.assertEquals(expected, actual);
     }
 
